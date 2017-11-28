@@ -1,0 +1,66 @@
+<template>
+   <!-- START Sidebar (left)-->
+   <div class="aside-inner">
+      <nav data-sidebar-anyclick-close="" class="sidebar">
+          <!-- START sidebar nav-->
+          <ul class="nav">
+            <!-- Iterates over all sidebar items-->
+            <li class="nav-heading ">
+               <span data-localize="sidebar.heading.HEADER">Menu</span>
+            </li>
+            
+            <li class="active">
+               <a href="/snippets" title="Home">
+                  <em class="icon-home" style="font-size: 25px;"></em>
+                  <span data-localize="sidebar.nav.SINGLEVIEW">Home</span>
+               </a>
+            </li>
+            
+            <li class=" ">
+               <a href="#multilevel" title="Django" data-toggle="collapse">
+                  <em class="icon-python" style="font-size: 25px;"></em>
+                  <span>Django</span>
+               </a>
+               <ul id="multilevel" class="nav sidebar-subnav collapse">
+                  <li class="sidebar-subnav-header">Django</li>
+
+                  <!-- LEVEL 1 Django -->
+                  <li class=" ">
+                     <a href="/snippets/django/deployment" title="Deployment">
+                        <span>Deployment</span>
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="/snippets/django/tutorial" title="Tutorial">
+                        <span>Tutorial</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+             <li class=" ">
+               <a href="#multilevel-tool" title="Tools" data-toggle="collapse">
+                  <em class="icon-python" style="font-size: 25px;"></em>
+                  <span>Tools</span>
+               </a>
+               <ul id="multilevel-tool" class="nav sidebar-subnav collapse">
+                  <li class="sidebar-subnav-header">Tools</li>
+
+                  <!-- LEVEL 1 Tools -->
+                  <li class=" ">
+                     <a href="/snippets/tools/pycharm" title="PyCharm">
+                        <span>PyCharm</span>
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="/snippets/tools/sublime" title="Sublime">
+                        <span>Sublime</span>
+                     </a>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+          <!-- END sidebar nav-->
+      </nav>
+   </div>
+   <!-- END Sidebar (left)-->
+</template>

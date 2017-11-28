@@ -34,142 +34,30 @@
    <link rel="stylesheet" href="/static/css/app.css" id="maincss">
    <!-- =============== SYNTAX HIGHLIGHTING ===============-->
    <link rel="stylesheet" href="/static/css/monokai.min.css">
+
+   <script>
+     function handleLoad(e) {
+       console.log('Loaded import: ' + e.target.href);
+     }
+     function handleError(e) {
+       console.log('Error loading import: ' + e.target.href);
+     }
+   </script>
+   <script src="/static/js/html-imports.min.js"></script>
+   <link rel="import" href="/snippets/header.html"
+         onload="handleLoad(event)" onerror="handleError(event)">
+   <link rel="import" href="/snippets/aside.html"
+         onload="handleLoad(event)" onerror="handleError(event)">
 </head>
 
 <body>
    <div class="wrapper">
       <!-- top navbar-->
       <header class="topnavbar-wrapper">
-         <!-- START Top Navbar-->
-         <nav role="navigation" class="navbar topnavbar">
-            <!-- START navbar header-->
-            <div class="navbar-header">
-               <a href="snippets" class="navbar-brand">
-                  <div class="brand-logo">
-
-                      <h4 style="color: white">Useful Articles</h4>
-                  </div>
-                  <div class="brand-logo-collapsed">
-
-                      <h4 style="color: white">SA</h4>
-                  </div>
-               </a>
-            </div>
-            <!-- END navbar header-->
-            <!-- START Nav wrapper-->
-            <div class="nav-wrapper">
-               <!-- START Left navbar-->
-               <ul class="nav navbar-nav">
-                  <li>
-                     <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                     <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
-                        <em class="fa fa-navicon"></em>
-                     </a>
-                     <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
-                     <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" class="visible-xs sidebar-toggle">
-                        <em class="fa fa-navicon"></em>
-                     </a>
-                  </li>
-               </ul>
-               <!-- END Left navbar-->
-            </div>
-            <!-- END Nav wrapper-->
-         </nav>
-         <!-- END Top Navbar-->
       </header>
       <!-- sidebar-->
-      <aside class="aside">
-         <!-- START Sidebar (left)-->
-         <div class="aside-inner">
-            <nav data-sidebar-anyclick-close="" class="sidebar">
-                <!-- START sidebar nav-->
-                <ul class="nav">
-                  <!-- Iterates over all sidebar items-->
-                  <li class="nav-heading ">
-                     <span data-localize="sidebar.heading.HEADER">Menu</span>
-                  </li>
-                  
-                  <li class="active">
-                     <a href="/snippets" title="Home">
-                        <em class="icon-home" style="font-size: 25px;"></em>
-                        <span data-localize="sidebar.nav.SINGLEVIEW">Home</span>
-                     </a>
-                  </li>
-                  
-                  <li class=" ">
-                     <a href="#multilevel" title="Django" data-toggle="collapse">
-                        <em class="icon-python" style="font-size: 25px;"></em>
-                        <span>Django</span>
-                     </a>
-                     <ul id="multilevel" class="nav sidebar-subnav collapse">
-                        <li class="sidebar-subnav-header">Django</li>
+      <aside class="aside"></aside>
 
-                        <!-- LEVEL 1 Django -->
-                        <li class=" ">
-                           <a href="/snippets/django/deployment" title="Deployment">
-                              <span>Deployment</span>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                   <li class=" ">
-                     <a href="#multilevel-tool" title="Tools" data-toggle="collapse">
-                        <em class="icon-python" style="font-size: 25px;"></em>
-                        <span>Tools</span>
-                     </a>
-                     <ul id="multilevel-tool" class="nav sidebar-subnav collapse">
-                        <li class="sidebar-subnav-header">Tools</li>
-
-                        <!-- LEVEL 1 Tools -->
-                        <li class=" ">
-                           <a href="/snippets/tools/pycharm" title="PyCharm">
-                              <span>PyCharm</span>
-                           </a>
-                        </li>
-                        <li class=" ">
-                           <a href="/snippets/tools/sublime" title="Sublime">
-                              <span>Sublime</span>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-                <!-- END sidebar nav-->
-            </nav>
-         </div>
-         <!-- END Sidebar (left)-->
-      </aside>
-      <!-- offsidebar-->
-      <aside class="offsidebar hide">
-         <!-- START Off Sidebar (right)-->
-         <nav>
-            <div role="tabpanel">
-               <!-- Nav tabs-->
-               <ul role="tablist" class="nav nav-tabs nav-justified">
-                  <li role="presentation" class="active">
-                     <a href="#app-settings" aria-controls="app-settings" role="tab" data-toggle="tab">
-                        <em class="icon-equalizer fa-lg"></em>
-                     </a>
-                  </li>
-                  <li role="presentation">
-                     <a href="#app-chat" aria-controls="app-chat" role="tab" data-toggle="tab">
-                        <em class="icon-user fa-lg"></em>
-                     </a>
-                  </li>
-               </ul>
-               <!-- Tab panes-->
-               <div class="tab-content">
-                  <div id="app-settings" role="tabpanel" class="tab-pane fade in active">
-                     <h3 class="text-center text-thin">Tab 1</h3>
-                  </div>
-                  <div id="app-chat" role="tabpanel" class="tab-pane fade">
-                     <h3 class="text-center text-thin">Tab 2</h3>
-                  </div>
-               </div>
-            </div>
-         </nav>
-         <!-- END Off Sidebar (right)-->
-      </aside>
       <!-- Main section-->
       <section>
          <!-- Page content-->
@@ -674,6 +562,29 @@
    <script src="/static/js/highlight.min.js"></script>
    <script>hljs.initHighlightingOnLoad();</script>
    <script src="/static/js/app.js"></script>
+
+   <script>
+      document.addEventListener( 'HTMLImportsLoaded', function () 
+      {
+         // <header> html include
+         var link_header = document.querySelector('link[href*="header"]');
+          // Clone the <template> in the import.
+          var template_header = link_header.import.querySelector('template');
+          var clone_header = document.importNode(template_header.content, true);
+
+          document.querySelector('.topnavbar-wrapper').appendChild(clone_header);
+
+
+          // <aside> html include
+          var link_aside = document.querySelector('link[href*="aside"]');
+
+          // Clone the <template> in the import.
+          var template_aside = link_aside.import.querySelector('template');
+          var clone_aside = document.importNode(template_aside.content, true);
+
+          document.querySelector('.aside').appendChild(clone_aside);
+      });
+   </script>
 
 </body>
 

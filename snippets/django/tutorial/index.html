@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+
+<head>
+    
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="All Kind of Snippets!">
+   <meta name="keywords" content="sunnyarora-tech, sunnyarora tech, sunny arora tech, snippets, code, programming, python, sunny arora">
+   <meta name="author" content="Sunny Arora">
+
+   <meta property="og:image" content="/static/img/snippets/avatar/avatar.png"/>
+   <meta property="og:site_name" content="Useful Snippets"/>
+
+   <link rel="shortcut icon" href="/static/img/favico.ico" type="image/x-icon">
+
+
+   <title>Useful Snippets</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="/static/css/font-awesome.css">
+   <!-- SIMPLE LINE ICONS-->
+   <link rel="stylesheet" href="/static/css/simple-line-icons.css">
+   <!-- FONT MFIZZ (programming languages icons)-->
+   <link rel="stylesheet" href="/static/css/font-mfizz.css">
+   <!-- ANIMATE.CSS-->
+   <link rel="stylesheet" href="/static/css/animate.min.css">
+   <!-- WHIRL (spinners)-->
+   <link rel="stylesheet" href="/static/css/whirl.css">
+   <!-- =============== PAGE VENDOR STYLES ===============-->
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css" id="bscss">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="/static/css/app.css" id="maincss">
+   <!-- =============== SYNTAX HIGHLIGHTING ===============-->
+   <link rel="stylesheet" href="/static/css/monokai.min.css">
+
+   <script>
+	  function handleLoad(e) {
+	    console.log('Loaded import: ' + e.target.href);
+	  }
+	  function handleError(e) {
+	    console.log('Error loading import: ' + e.target.href);
+	  }
+	</script>
+	<script src="/static/js/html-imports.min.js"></script>
+	<link rel="import" href="/snippets/header.html"
+	      onload="handleLoad(event)" onerror="handleError(event)">
+	<link rel="import" href="/snippets/aside.html"
+	      onload="handleLoad(event)" onerror="handleError(event)">
+</head>
+
+<body>
+   <div class="wrapper">
+       <!-- top navbar-->
+	    <header class="topnavbar-wrapper">
+	    </header>
+	    <!-- sidebar-->
+	    <aside class="aside"></aside>
+
+        <!-- Main section-->
+        <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+             <div class="content-heading">
+                  Django Web Development from scratch
+             </div>
+             <div class="panel-anim-fadeIn">
+                  <div class="content-body tutorial-content" data-growable-markdown>
+					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
+					<h4>Django is Ridiculously fast.</h4>
+					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
+					<h4>Django is Fully loaded.</h4>
+					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
+					<h4>Django is Reassuringly secure.</h4>
+					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
+					<h4>Django is Exceedingly scalable.</h4>
+					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
+					<h4>Django is Incredibly versatile.</h4>
+					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
+					<h2>Sites Using Django</h2>
+					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
+					<li><a href="http://instagram.com/">Instagram</a></li>
+					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
+					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
+					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
+					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
+					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
+					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
+					<li><a href="http://www.openstack.org/">Open Stack</a></li>
+					</ul>
+				</div>
+				<hr>
+			</div>
+         </div>
+      </section>
+      <!-- Page footer-->
+
+	</div>
+	<!-- =============== VENDOR SCRIPTS ===============-->
+	<!-- MODERNIZR-->
+	<script src="/static/js/modernizr.custom.js"></script>
+	<!-- JQUERY-->
+	<script src="/static/js/jquery-1.11.1.min.js"></script>
+	<!-- BOOTSTRAP-->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<!-- STORAGE API-->
+	<script src="/static/js/jquery.storageapi.js"></script>
+	<!-- JQUERY EASING-->
+	<script src="/static/js/jquery.easing.js"></script>
+	<!-- ANIMO-->
+	<script src="/static/js/animo.js"></script>
+	<!-- SYNTAX HIGHLIGHTING -->
+	<script src="/static/js/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="/static/js/app.js"></script>
+
+    <script>
+    	document.addEventListener( 'HTMLImportsLoaded', function () 
+    	{
+    		// <header> html include
+    		var link_header = document.querySelector('link[href*="header"]');
+		    // Clone the <template> in the import.
+		    var template_header = link_header.import.querySelector('template');
+		    var clone_header = document.importNode(template_header.content, true);
+
+		    document.querySelector('.topnavbar-wrapper').appendChild(clone_header);
+
+
+		    // <aside> html include
+		    var link_aside = document.querySelector('link[href*="aside"]');
+
+		    // Clone the <template> in the import.
+		    var template_aside = link_aside.import.querySelector('template');
+		    var clone_aside = document.importNode(template_aside.content, true);
+
+		    document.querySelector('.aside').appendChild(clone_aside);
+		});
+  	</script>
+
+</body>
+
+</html>
