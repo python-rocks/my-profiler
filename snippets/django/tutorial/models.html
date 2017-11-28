@@ -70,42 +70,45 @@
 
                     <p>A model is a class that represents table or collection in our DB, and where every attribute of the class is a field of the table or collection.</p>
 					<p>Let's open <em><strong><code>blog/models.py</code></strong></em>, remove everything from it, and write code like this:</p>
-					<pre class="language-python"><code>from django.db import models
-					from django.core.urlresolvers import reverse
+<pre class="language-python"><code>
+from django.db import models
+from django.core.urlresolvers import reverse
 
-					class EntryQuerySet(models.QuerySet):
-					    def published(self):
-					        return self.filter(publish=True)
+class EntryQuerySet(models.QuerySet):
+    def published(self):
+        return self.filter(publish=True)
 
-					class Entry(models.Model):
-					    title = models.CharField(max_length=200)
-					    body = models.TextField()
-					    slug = models.SlugField(max_length=200, unique=True)
-					    publish = models.BooleanField(default=False)
-					    created = models.DateTimeField(auto_now_add=True)
-					    modified = models.DateTimeField(auto_now=True)
+class Entry(models.Model):
+    title = models.CharField(max_length=200)
+    body = models.TextField()
+    slug = models.SlugField(max_length=200, unique=True)
+    publish = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
-					    objects = EntryQuerySet.as_manager()
+    objects = EntryQuerySet.as_manager()
 
-					    def __str__(self):
-					        return self.title
+    def __str__(self):
+        return self.title
 
-					    class Meta:
-					        verbose_name = "Blog Entry"
-					        verbose_name_plural = "Blog Entries"
-					        ordering = ["-created"]</code></pre>
+    class Meta:
+        verbose_name = "Blog Entry"
+        verbose_name_plural = "Blog Entries"
+        ordering = ["-created"]
+</code></pre>
 					<p>We have created a Custom manager for Entry model i.e EntryQuerySet. More Information @ <a href="https://docs.djangoproject.com/en/1.10/topics/db/managers/">Managers</a></p>
 					<p>Perform the migrations using:<br><br><strong><span class="go">./manage.py makemigrations blog<br></span><span class="go">./manage.py migrate blog</span></strong></p>
 					<p><span class="go">This creates a new migration for model Entry inside the migrations folder. We can browse the same by blog/migrations/0001_initial.py</span></p>
 					<p><span class="go"><br><br>One of the most powerful parts of Django is the automatic admin interface. It reads metadata from your models to provide a quick, model-centric interface where trusted users can manage content on your site.<br>Let's learn how to activate, use, and customize Django’s admin interface.<br><br>Change <strong><em><code>blog/admin.py</code></em></strong> to:<br></span></p>
-					<pre class="language-python"><code>from django.contrib import admin
-					from . import models
+<pre class="language-python"><code>
+from django.contrib import admin
+from . import models
 
-					class EntryAdmin(admin.ModelAdmin):
-					    list_display = ("title", "created")
-					    prepopulated_fields = {"slug": ("title",)}
+class EntryAdmin(admin.ModelAdmin):
+    list_display = ("title", "created")
+    prepopulated_fields = {"slug": ("title",)}
 
-					admin.site.register(models.Entry, EntryAdmin)</code></pre>
+admin.site.register(models.Entry, EntryAdmin)</code></pre>
 					<p>Here we create a new Admin class named <strong>EntryAdmin</strong> with two attributes and further register it with the django admin site.</p>
 					<ol><li><strong>list_display</strong> - Control which fields are displayed on the change list page of the admin.</li>
 					<li><span class="n"><strong>prepopulated_fields</strong> - A dictionary mapping field names to the fields it should prepopulate from.</span></li>

@@ -70,27 +70,30 @@
 
 					<p>Django comes with a high-level syndication-feed-generating framework that makes creating <a href="http://www.whatisrss.com/"><span style="text-decoration:underline;">RSS</span> </a>and <a class="reference external" href="https://tools.ietf.org/html/rfc4287">Atom</a> feeds easy.</p>
 					<p>To create any syndication feed, we will be creating a new file under blog/feed.py to show our latest 5 puplished blogs :</p>
-					<pre class="language-python"><code>from django.contrib.syndication.views import Feed
-					from blog.models import Entry
+<pre class="language-python"><code>
+from django.contrib.syndication.views import Feed
+from blog.models import Entry
 
-					class LatestPosts(Feed):
-					    title = "Q Blog"
-					    link = "/feed/"
-					    description = "Latest Posts"
+class LatestPosts(Feed):
+    title = "Q Blog"
+    link = "/feed/"
+    description = "Latest Posts"
 
-					    def items(self):
-					        return Entry.objects.published()[:5]</code></pre>
+    def items(self):
+        return Entry.objects.published()[:5]</code></pre>
 					<p>Update <code>blog/urls.py to :</code></p>
-					<pre class="language-python"><code>from . import views, feed
+<pre class="language-python"><code>
+from . import views, feed
 
-					...
+...
 
-					url(r'^feed/$', feed.LatestPosts(), name="feed"),</code></pre>
-					<pre class="language-markup"><code>&lt;head&gt;
-					    ....    
-					    &lt;link href="/feed/" rel="alternate" type="application/rss+xml" title="Q Blog Feed" /&gt;    
-					    ....
-					&lt;/head&gt;</code></pre>
+url(r'^feed/$', feed.LatestPosts(), name="feed"),</code></pre>
+<pre class="language-markup"><code>
+&lt;head&gt;
+    ....    
+    &lt;link href="/feed/" rel="alternate" type="application/rss+xml" title="Q Blog Feed" /&gt;    
+    ....
+&lt;/head&gt;</code></pre>
 					<p>Restart the development server and browse <a href="http://127.0.0.1:8000/feed">http://127.0.0.1:8000/feed</a> to see the blog post feeds.</p>
 					<h6><br><strong>Congratulations !! You have created your Personal Blog in Django.</strong></h6>
 					<p>If you face any issues, recheck your code with the turtorial and I would love to hear your comments and feedback.</p>

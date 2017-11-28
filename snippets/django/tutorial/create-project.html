@@ -68,9 +68,10 @@
              <div class="panel-anim-fadeIn">
                   <div class="content-body tutorial-content" data-growable-markdown>
 
-					<pre class="language-markup"><code>username@hostname:~$cd myFirstProject
-					username@hostname:~/myFirstProject$source djangoenv/bin/activate
-					(djangoenv)username@hostname:~/myFirstProject$</code></pre>
+<pre class="language-markup"><code>
+username@hostname:~$cd myFirstProject
+username@hostname:~/myFirstProject$source djangoenv/bin/activate
+(djangoenv)username@hostname:~/myFirstProject$</code></pre>
 					<p>We would be building a blog in Django which would basically cover:</p>
 					<ul><li>Using contrib.adminto create fully-featured admin pages</li>
 					<li>Adding tags to posts easily using <a href="https://github.com/alex/django-taggit/">taggit</a> app</li>
@@ -85,43 +86,46 @@
 					<p>Let’s start with our project now ....</p>
 					<ol><li>Start the project<br><br><strong>django-admin startproject djblog<br><br></strong></li>
 					<li>Browse the project and run the below commands to create a superuser (admin rights) and migrations.<strong><br><br></strong>
-					<pre class="language-markup"><code>cd djblog
+<pre class="language-markup"><code>
+cd djblog
 
-					./manage.py migrate (Does all the migrations for the in-built apps auth, sessions etc. )
+./manage.py migrate (Does all the migrations for the in-built apps auth, sessions etc. )
 
-					./manage.py createsuperuser (Creates a super user with admin rights. Provide your username and password to create sucessfully)
+./manage.py createsuperuser (Creates a super user with admin rights. Provide your username and password to create sucessfully)
 
-					./manage.py runserver (Run the development server and browse 127.0.0.1 to check the Django powered web-page)</code></pre>
+./manage.py runserver (Run the development server and browse 127.0.0.1 to check the Django powered web-page)</code></pre>
 					</li>
 					<li>Add a new application blog<br><br><strong>./manage.py startapp blog<br><br></strong></li>
 					<li>Open the project in your convenient Editor (PyCharm, Sublime Text 3 etc. )</li>
-					<li>Edit djblog/settings.py to add "<strong><em>blog</em></strong>" in the list of installed apps.<br><br><pre class="language-python"><code>INSTALLED_APPS = [
-					    'django.contrib.admin',
-					    'django.contrib.auth',
-					    'django.contrib.contenttypes',
-					    'django.contrib.sessions',
-					    'django.contrib.messages',
-					    'django.contrib.staticfiles',
-					    'blog',
-					]
-					</code></pre>
+					<li>Edit djblog/settings.py to add "<strong><em>blog</em></strong>" in the list of installed apps.<br><br>
+<pre class="language-python"><code>INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog',
+]
+</code></pre>
 					</li>
 					<li>Add the Template search directory path in djblog/settings.py<strong><br></strong><strong><strong><br></strong></strong>
-					<pre class="language-python"><code>TEMPLATES = [
-					    {
-					        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-					        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-					        'APP_DIRS': True,
-					        'OPTIONS': {
-					            'context_processors': [
-					                'django.template.context_processors.debug',
-					                'django.template.context_processors.request',
-					                'django.contrib.auth.context_processors.auth',
-					                'django.contrib.messages.context_processors.messages',
-					            ],
-					        },
-					    },
-					]</code></pre>
+<pre class="language-python"><code>
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]</code></pre>
 					</li>
 					</ol>
 

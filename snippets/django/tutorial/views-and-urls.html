@@ -69,30 +69,35 @@
                   <div class="content-body tutorial-content" data-growable-markdown>
 
 					<p>A <em>view</em> is a place where we put the "logic" of our application. It will request information from the <code>model</code>you created before and pass it to a <code>template</code>.<br>We would be using Django generic class based views to create our logic for the application.</p>
-					<ol><li>Update  <code>blog/views.py to get the blogs to show on the index view of our app</code>:<br><br><pre class="language-python"><code>from django.views import generic
-					from . import models
+					<ol><li>Update  <code>blog/views.py to get the blogs to show on the index view of our app</code>:<br><br>
+<pre class="language-python"><code>
+from django.views import generic
+from . import models
 
-					class BlogIndex(generic.ListView):
-					    queryset = models.Entry.objects.published()
-					    template_name = "home.html"
-					    paginate_by = 2</code></pre>
+class BlogIndex(generic.ListView):
+    queryset = models.Entry.objects.published()
+    template_name = "home.html"
+    paginate_by = 2</code></pre>
 					</li>
-					<li>Add a detail view for a particular blog, updating blog/views.py :<br><br><pre class="language-python"><code>class BlogDetail(generic.DetailView):
-					    model = models.Entry
-					    template_name = "post.html"</code></pre>
+					<li>Add a detail view for a particular blog, updating blog/views.py :<br><br>
+<pre class="language-python"><code>class BlogDetail(generic.DetailView):
+    model = models.Entry
+    template_name = "post.html"</code></pre>
 					</li>
-					<li>Update the url mapping for both our list and detail views in dj<code>blog/urls.py</code>:<br><br><pre class="language-python"><code>urlpatterns = [
-					    url(r'^admin/', include(admin.site.urls)),
-					    url(r'^', include('blog.urls')),
-					]</code></pre>
+					<li>Update the url mapping for both our list and detail views in dj<code>blog/urls.py</code>:<br><br>
+<pre class="language-python"><code>urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('blog.urls')),
+]</code></pre>
 					</li>
-					<li>Create blog/urls.py with the below code<br><br><pre class="language-python"><code>from django.conf.urls import url
-					from . import views
+					<li>Create blog/urls.py with the below code<br><br>
+<pre class="language-python"><code>from django.conf.urls import url
+from . import views
 
-					urlpatterns = [
-					    url(r'^$', views.BlogIndex.as_view(), name="index"),
-					    url(r'^entry/(?P&lt;slug&gt;\S+)$', views.BlogDetail.as_view(), name="entry_detail"),
-					]</code></pre>
+urlpatterns = [
+    url(r'^$', views.BlogIndex.as_view(), name="index"),
+    url(r'^entry/(?P&lt;slug&gt;\S+)$', views.BlogDetail.as_view(), name="entry_detail"),
+]</code></pre>
 					</li>
 					</ol>
 
