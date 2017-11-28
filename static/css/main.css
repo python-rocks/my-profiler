@@ -191,6 +191,7 @@ EXPERIENCES
 .job .profession{
   font-size: 1.6em;
   font-weight: bold;
+  padding-left: 40px;
 }
 .job .description{
   font-size: 1.2em;
