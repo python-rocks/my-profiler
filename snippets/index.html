@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+
+<head>
+    
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="All Kind of Snippets!">
+   <meta name="keywords" content="sunnyarora-tech, sunnyarora tech, sunny arora tech, snippets, code, programming, python, sunny arora">
+   <meta name="author" content="Sunny Arora">
+
+   <meta property="og:image" content="/static/img/snippets/avatar/avatar.png"/>
+   <meta property="og:site_name" content="Useful Snippets"/>
+
+   <link rel="shortcut icon" href="/static/img/favico.ico" type="image/x-icon">
+
+
+   <title>Useful Snippets</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="/static/css/font-awesome.css">
+   <!-- SIMPLE LINE ICONS-->
+   <link rel="stylesheet" href="/static/css/simple-line-icons.css">
+   <!-- FONT MFIZZ (programming languages icons)-->
+   <link rel="stylesheet" href="/static/css/font-mfizz.css">
+   <!-- ANIMATE.CSS-->
+   <link rel="stylesheet" href="/static/css/animate.min.css">
+   <!-- WHIRL (spinners)-->
+   <link rel="stylesheet" href="/static/css/whirl.css">
+   <!-- =============== PAGE VENDOR STYLES ===============-->
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css" id="bscss">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="/static/css/app.css" id="maincss">
+   <!-- =============== SYNTAX HIGHLIGHTING ===============-->
+   <link rel="stylesheet" href="/static/css/monokai.min.css">
+
+   <script>
+     function handleLoad(e) {
+       console.log('Loaded import: ' + e.target.href);
+     }
+     function handleError(e) {
+       console.log('Error loading import: ' + e.target.href);
+     }
+   </script>
+   <script src="/static/js/html-imports.min.js"></script>
+   <link rel="import" href="/snippets/header.html"
+         onload="handleLoad(event)" onerror="handleError(event)">
+   <link rel="import" href="/snippets/aside.html"
+         onload="handleLoad(event)" onerror="handleError(event)">
+</head>
+
+<body>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+      </header>
+      <!-- sidebar-->
+      <aside class="aside"></aside>
+
+      <!-- Main section-->
+      <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+             <div class="content-heading">
+                  Home
+             </div>
+             <div class="panel-anim-fadeIn">
+                  <div class="col-xs-12 text-center">
+                    <h2 class="text-thin">Welcome</h2>
+                    <p style="font-size: 20px;">
+
+                        This page is intended to showcase some useful articles and snippets <br>
+                        for various subjects. <br><br>
+                        <br><br><br>
+
+                        <a href="https://github.com/sunnyar" target="_blank"><i class="fa fa-git-square" aria-hidden="true" style="font-size: 50px; color: deepskyblue"></i></a>
+                        <a href="https://www.linkedin.com/in/sunny-arora-6700a53a/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true" style="font-size: 50px; color: deepskyblue"></i></a>
+                        <a href="/"><i class="fa fa-home" aria-hidden="true" style="font-size: 50px; color: deepskyblue"></i></a>
+
+                        <br><br><br><br>
+
+                        <p style="font-size: 25px; color: darkgray; font-style: italic;">sunnyarora6987@gmail.com</p>
+                    </p>
+                  </div>
+                 <hr>
+             </div>
+         </div>
+      </section>
+      <!-- Page footer-->
+    </div>
+
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <!-- MODERNIZR-->
+    <script src="/static/js/modernizr.custom.js"></script>
+    <!-- JQUERY-->
+    <script src="/static/js/jquery-1.11.1.min.js"></script>
+    <!-- BOOTSTRAP-->
+    <script src="/static/js/bootstrap.min.js"></script>
+    <!-- STORAGE API-->
+    <script src="/static/js/jquery.storageapi.js"></script>
+    <!-- JQUERY EASING-->
+    <script src="/static/js/jquery.easing.js"></script>
+    <!-- ANIMO-->
+    <script src="/static/js/animo.js"></script>
+    <!-- SYNTAX HIGHLIGHTING -->
+    <script src="/static/js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/static/js/app.js"></script>
+
+    <script>
+      document.addEventListener( 'HTMLImportsLoaded', function () 
+      {
+         // <header> html include
+         var link_header = document.querySelector('link[href*="header"]');
+          // Clone the <template> in the import.
+          var template_header = link_header.import.querySelector('template');
+          var clone_header = document.importNode(template_header.content, true);
+
+          document.querySelector('.topnavbar-wrapper').appendChild(clone_header);
+
+
+          // <aside> html include
+          var link_aside = document.querySelector('link[href*="aside"]');
+
+          // Clone the <template> in the import.
+          var template_aside = link_aside.import.querySelector('template');
+          var clone_aside = document.importNode(template_aside.content, true);
+
+          document.querySelector('.aside').appendChild(clone_aside);
+      });
+    </script>
+
+</body>
+
+</html>
