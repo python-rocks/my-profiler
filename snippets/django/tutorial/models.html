@@ -63,35 +63,60 @@
          <!-- Page content-->
          <div class="content-wrapper">
              <div class="content-heading">
-                  Django Web Development from scratch
+                  Django Models and Admin
              </div>
              <div class="panel-anim-fadeIn">
                   <div class="content-body tutorial-content" data-growable-markdown>
-					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-					<h4>Django is Ridiculously fast.</h4>
-					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-					<h4>Django is Fully loaded.</h4>
-					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
-					<h4>Django is Reassuringly secure.</h4>
-					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
-					<h4>Django is Exceedingly scalable.</h4>
-					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
-					<h4>Django is Incredibly versatile.</h4>
-					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-					<h2>Sites Using Django</h2>
-					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
-					<li><a href="http://instagram.com/">Instagram</a></li>
-					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
-					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
-					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
-					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
-					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
-					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
-					<li><a href="http://www.openstack.org/">Open Stack</a></li>
-					</ul>
-				</div>
-				<hr>
-				<a href="/snippets/django/tutorial/overview"><button>Next</button></a>
+
+                    <p>A model is a class that represents table or collection in our DB, and where every attribute of the class is a field of the table or collection.</p>
+					<p>Let's open <em><strong><code>blog/models.py</code></strong></em>, remove everything from it, and write code like this:</p>
+					<pre class="language-python"><code>from django.db import models
+					from django.core.urlresolvers import reverse
+
+					class EntryQuerySet(models.QuerySet):
+					    def published(self):
+					        return self.filter(publish=True)
+
+					class Entry(models.Model):
+					    title = models.CharField(max_length=200)
+					    body = models.TextField()
+					    slug = models.SlugField(max_length=200, unique=True)
+					    publish = models.BooleanField(default=False)
+					    created = models.DateTimeField(auto_now_add=True)
+					    modified = models.DateTimeField(auto_now=True)
+
+					    objects = EntryQuerySet.as_manager()
+
+					    def __str__(self):
+					        return self.title
+
+					    class Meta:
+					        verbose_name = "Blog Entry"
+					        verbose_name_plural = "Blog Entries"
+					        ordering = ["-created"]</code></pre>
+					<p>We have created a Custom manager for Entry model i.e EntryQuerySet. More Information @ <a href="https://docs.djangoproject.com/en/1.10/topics/db/managers/">Managers</a></p>
+					<p>Perform the migrations using:<br><br><strong><span class="go">./manage.py makemigrations blog<br></span><span class="go">./manage.py migrate blog</span></strong></p>
+					<p><span class="go">This creates a new migration for model Entry inside the migrations folder. We can browse the same by blog/migrations/0001_initial.py</span></p>
+					<p><span class="go"><br><br>One of the most powerful parts of Django is the automatic admin interface. It reads metadata from your models to provide a quick, model-centric interface where trusted users can manage content on your site.<br>Let's learn how to activate, use, and customize Django’s admin interface.<br><br>Change <strong><em><code>blog/admin.py</code></em></strong> to:<br></span></p>
+					<pre class="language-python"><code>from django.contrib import admin
+					from . import models
+
+					class EntryAdmin(admin.ModelAdmin):
+					    list_display = ("title", "created")
+					    prepopulated_fields = {"slug": ("title",)}
+
+					admin.site.register(models.Entry, EntryAdmin)</code></pre>
+					<p>Here we create a new Admin class named <strong>EntryAdmin</strong> with two attributes and further register it with the django admin site.</p>
+					<ol><li><strong>list_display</strong> - Control which fields are displayed on the change list page of the admin.</li>
+					<li><span class="n"><strong>prepopulated_fields</strong> - A dictionary mapping field names to the fields it should prepopulate from.</span></li>
+					</ol>
+
+					<p><span class="n">Restart your development server suing ./manage.py runserver, browse <a href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a> and l</span><span class="n">ogin with your superuser credentials</span></p>
+					<p><span class="n">Go to Blog Entries.  Add an unpublished post and published one. <br><br>Then open <strong><code>./manage shell</code></strong> and check the difference between <strong><code>Entry.objects.all()</code></strong> and <strong><code>Entry.objects.published()</code></strong>.</span></p>
+
+					<hr>
+					<a href="/snippets/django/tutorial/create-project"><button>Prev</button></a>
+					<a href="/snippets/django/tutorial/views-and-urls"><button>Next</button></a>
 			</div>
          </div>
       </section>

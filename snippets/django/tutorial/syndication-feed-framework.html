@@ -63,35 +63,40 @@
          <!-- Page content-->
          <div class="content-wrapper">
              <div class="content-heading">
-                  Django Web Development from scratch
+                  Django syndication feed framework
              </div>
              <div class="panel-anim-fadeIn">
-                  <div class="content-body tutorial-content" data-growable-markdown>
-					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-					<h4>Django is Ridiculously fast.</h4>
-					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-					<h4>Django is Fully loaded.</h4>
-					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
-					<h4>Django is Reassuringly secure.</h4>
-					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
-					<h4>Django is Exceedingly scalable.</h4>
-					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
-					<h4>Django is Incredibly versatile.</h4>
-					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-					<h2>Sites Using Django</h2>
-					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
-					<li><a href="http://instagram.com/">Instagram</a></li>
-					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
-					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
-					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
-					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
-					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
-					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
-					<li><a href="http://www.openstack.org/">Open Stack</a></li>
-					</ul>
-				</div>
-				<hr>
-				<a href="/snippets/django/tutorial/overview"><button>Next</button></a>
+                <div class="content-body tutorial-content" data-growable-markdown>
+
+					<p>Django comes with a high-level syndication-feed-generating framework that makes creating <a href="http://www.whatisrss.com/"><span style="text-decoration:underline;">RSS</span> </a>and <a class="reference external" href="https://tools.ietf.org/html/rfc4287">Atom</a> feeds easy.</p>
+					<p>To create any syndication feed, we will be creating a new file under blog/feed.py to show our latest 5 puplished blogs :</p>
+					<pre class="language-python"><code>from django.contrib.syndication.views import Feed
+					from blog.models import Entry
+
+					class LatestPosts(Feed):
+					    title = "Q Blog"
+					    link = "/feed/"
+					    description = "Latest Posts"
+
+					    def items(self):
+					        return Entry.objects.published()[:5]</code></pre>
+					<p>Update <code>blog/urls.py to :</code></p>
+					<pre class="language-python"><code>from . import views, feed
+
+					...
+
+					url(r'^feed/$', feed.LatestPosts(), name="feed"),</code></pre>
+					<pre class="language-markup"><code>&lt;head&gt;
+					    ....    
+					    &lt;link href="/feed/" rel="alternate" type="application/rss+xml" title="Q Blog Feed" /&gt;    
+					    ....
+					&lt;/head&gt;</code></pre>
+					<p>Restart the development server and browse <a href="http://127.0.0.1:8000/feed">http://127.0.0.1:8000/feed</a> to see the blog post feeds.</p>
+					<h6><br><strong>Congratulations !! You have created your Personal Blog in Django.</strong></h6>
+					<p>If you face any issues, recheck your code with the turtorial and I would love to hear your comments and feedback.</p>
+
+					<hr>
+					<a href="/snippets/django/tutorial/templating-system"><button>Prev</button></a>
 			</div>
          </div>
       </section>

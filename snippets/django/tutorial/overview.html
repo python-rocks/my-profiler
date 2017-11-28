@@ -63,35 +63,60 @@
          <!-- Page content-->
          <div class="content-wrapper">
              <div class="content-heading">
-                  Django Web Development from scratch
+                  Basics and Overview
              </div>
              <div class="panel-anim-fadeIn">
                   <div class="content-body tutorial-content" data-growable-markdown>
-					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-					<h4>Django is Ridiculously fast.</h4>
-					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-					<h4>Django is Fully loaded.</h4>
-					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
-					<h4>Django is Reassuringly secure.</h4>
-					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
-					<h4>Django is Exceedingly scalable.</h4>
-					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
-					<h4>Django is Incredibly versatile.</h4>
-					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-					<h2>Sites Using Django</h2>
-					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
-					<li><a href="http://instagram.com/">Instagram</a></li>
-					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
-					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
-					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
-					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
-					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
-					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
-					<li><a href="http://www.openstack.org/">Open Stack</a></li>
+
+					<p>Django is a free and open-source web framework, written in Python, which follows the model-view-template (MVT) architectural pattern. It is maintained by the Django Software Foundation (DSF).</p>
+					<p>Django comes with the following design philosophies -</p>
+					<ul class="list"><li>
+					<p><strong>Loosely Coupled</strong> : Django aims to make each element of its stack independent of the others.</p>
+					</li>
+					<li>
+					<p><strong>Less Coding</strong> : Less code so in turn a quick development.</p>
+					</li>
+					<li>
+					<p><strong>Don't Repeat Yourself (DRY)</strong> : Everything should be developed only in exactly one place instead of repeating it again and again.</p>
+					</li>
+					<li>
+					<p><strong>Fast Development</strong> : Django's philosophy is to do all it can to facilitate hyper-fast development.</p>
+					</li>
+					<li>
+					<p><strong>Clean Design</strong> : Django strictly maintains a clean design throughout its own code and makes it easy to follow best web-development practices.</p>
+					</li>
 					</ul>
-				</div>
-				<hr>
-				<a href="/snippets/django/tutorial/overview"><button>Next</button></a>
+
+					<h1><strong>Advantages of Django</strong></h1>
+					<p>Here are few advantages of using Django which can be listed out here ?</p>
+					<ul class="list"><li>
+					<p><strong>Object-Relational Mapping (ORM) Support</strong> : Django provides a bridge between the data model and the database engine, and supports a large set of database systems including MySQL, Oracle, Postgres, etc. Django also supports NoSQL database such as MongoDB and google app engine.</p>
+					</li>
+					<li>
+					<p><strong>Multilingual Support</strong> : Django supports multilingual websites through its built-in internationalization system to support multiple languages.</p>
+					</li>
+					<li>
+					<p><strong>Framework Support</strong> : Django has built-in support for Ajax, RSS, Caching and various other frameworks.</p>
+					</li>
+					<li>
+					<p><strong>Admin GUI</strong> : Django provides a nice ready-to-use user interface for administrative activities.</p>
+					</li>
+					<li>
+					<p><strong>Environment for Developers</strong> : Django comes with a lightweight web server to facilitate end-to-end application development and testing.</p>
+					</li>
+					</ul>
+
+					<h1><strong>MVC Pattern</strong></h1>
+					<p>When talking about applications that provides UI (web or desktop), we usually talk about MVC architecture. And as the name suggests, MVC pattern is based on three components: Model, View, and Controller.</p>
+					<ul class="simple"><li><strong>Controller</strong>. A controller is the heart of the system, it steers everything. For a web framework, this means handling requests and responses, setting up database connections and loading add-ons. For this, Django reads a <em>settings file</em> so that it knows what to load and set up. And Django reads a <em>URL config file</em> that tells it what to do with the incoming requests from browsers.</li>
+					<li><strong>Model</strong>. The model layer in Django means the database plus the Python code that directly uses it. It models reality. You capture whatever your website needs in database tables. Django helps you write Python classes (called <em>models</em>) that tie 1:1 to the database tables.</li>
+					<li><strong>View</strong>. The view layer is the user interface. Django splits this up in the actual HTML pages and the Python code (called <em>views</em>) that renders them. And it also has an automatic web admin interface for editing the models.</li>
+					</ul>
+
+					<p><img src="http://www.tutorialspoint.com/django/images/django_mvc_mvt_pattern.jpg" alt="" width="600" height="270"></p>
+					<hr>
+					<a href="/snippets/django/tutorial"><button>Prev</button></a>
+					<a href="/snippets/django/tutorial/installation"><button>Next</button></a>
 			</div>
          </div>
       </section>

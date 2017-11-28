@@ -63,35 +63,44 @@
          <!-- Page content-->
          <div class="content-wrapper">
              <div class="content-heading">
-                  Django Web Development from scratch
+                  Django Views and Urls
              </div>
              <div class="panel-anim-fadeIn">
                   <div class="content-body tutorial-content" data-growable-markdown>
-					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-					<h4>Django is Ridiculously fast.</h4>
-					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-					<h4>Django is Fully loaded.</h4>
-					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
-					<h4>Django is Reassuringly secure.</h4>
-					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
-					<h4>Django is Exceedingly scalable.</h4>
-					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
-					<h4>Django is Incredibly versatile.</h4>
-					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-					<h2>Sites Using Django</h2>
-					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
-					<li><a href="http://instagram.com/">Instagram</a></li>
-					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
-					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
-					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
-					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
-					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
-					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
-					<li><a href="http://www.openstack.org/">Open Stack</a></li>
-					</ul>
-				</div>
-				<hr>
-				<a href="/snippets/django/tutorial/overview"><button>Next</button></a>
+
+					<p>A <em>view</em> is a place where we put the "logic" of our application. It will request information from the <code>model</code>you created before and pass it to a <code>template</code>.<br>We would be using Django generic class based views to create our logic for the application.</p>
+					<ol><li>Update  <code>blog/views.py to get the blogs to show on the index view of our app</code>:<br><br><pre class="language-python"><code>from django.views import generic
+					from . import models
+
+					class BlogIndex(generic.ListView):
+					    queryset = models.Entry.objects.published()
+					    template_name = "home.html"
+					    paginate_by = 2</code></pre>
+					</li>
+					<li>Add a detail view for a particular blog, updating blog/views.py :<br><br><pre class="language-python"><code>class BlogDetail(generic.DetailView):
+					    model = models.Entry
+					    template_name = "post.html"</code></pre>
+					</li>
+					<li>Update the url mapping for both our list and detail views in dj<code>blog/urls.py</code>:<br><br><pre class="language-python"><code>urlpatterns = [
+					    url(r'^admin/', include(admin.site.urls)),
+					    url(r'^', include('blog.urls')),
+					]</code></pre>
+					</li>
+					<li>Create blog/urls.py with the below code<br><br><pre class="language-python"><code>from django.conf.urls import url
+					from . import views
+
+					urlpatterns = [
+					    url(r'^$', views.BlogIndex.as_view(), name="index"),
+					    url(r'^entry/(?P&lt;slug&gt;\S+)$', views.BlogDetail.as_view(), name="entry_detail"),
+					]</code></pre>
+					</li>
+					</ol>
+
+					<p>Next we would build the template for our defined views. For more info on Generic Views refer <a href="https://ccbv.co.uk/">https://ccbv.co.uk/</a></p>
+
+					<hr>
+					<a href="/snippets/django/tutorial/models"><button>Prev</button></a>
+					<a href="/snippets/django/tutorial/templating-system"><button>Next</button></a>
 			</div>
          </div>
       </section>

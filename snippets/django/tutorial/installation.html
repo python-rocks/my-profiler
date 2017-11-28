@@ -63,35 +63,22 @@
          <!-- Page content-->
          <div class="content-wrapper">
              <div class="content-heading">
-                  Django Web Development from scratch
+                  Prerequisites and Installation
              </div>
              <div class="panel-anim-fadeIn">
                   <div class="content-body tutorial-content" data-growable-markdown>
-					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-					<h4>Django is Ridiculously fast.</h4>
-					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-					<h4>Django is Fully loaded.</h4>
-					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
-					<h4>Django is Reassuringly secure.</h4>
-					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
-					<h4>Django is Exceedingly scalable.</h4>
-					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
-					<h4>Django is Incredibly versatile.</h4>
-					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-					<h2>Sites Using Django</h2>
-					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
-					<li><a href="http://instagram.com/">Instagram</a></li>
-					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
-					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
-					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
-					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
-					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
-					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
-					<li><a href="http://www.openstack.org/">Open Stack</a></li>
-					</ul>
-				</div>
-				<hr>
-				<a href="/snippets/django/tutorial/overview"><button>Next</button></a>
+
+					<p>Let's make sure we have the following installed and ready to go. </p>
+					<h2><strong>Requirements</strong></h2>
+					<p>Python 2.7 or higher</p>
+					<h2><strong>Installation through pip in a Virtualenv</strong></h2>
+					<p><br>The most efficient way to install Django on your system is using the <strong><code>virtualenv</code></strong> tool. This tool allows you to create virtual Python environments where you can install any Python packages you want without affecting the rest of the system. This allows you to select Python packages on a per-project basis regardless of conflicts with other project's requirements.<br><br>Install pip :<br><br><strong><code>sudo apt-get install python-pip (Python2)<br></code></strong><strong><code>sudo apt-get install python3-pip (Python3)<br><br></code></strong>Once <code>pip</code> is installed, use it to install the <code>virtualenv</code> package. <br><br><strong><code>sudo pip install virtualenv (Python2)<br></code></strong><strong><code>sudo pip3 install virtualenv (Python3)<br><br></code></strong></p>
+					<p>Now create a your new project directory:<br><br><strong><code>mkdir ~/myFirstP<span class="highlight">roject<br></span>cd </code><code>myFirstP<span class="highlight">roject<br><br></span></code></strong>Now, create a virtual environment within the project directory by typing:<br><br><strong><code>virtualenv django<span class="highlight">env</span> <br><br></code></strong>This will install a standalone version of Python, as well as <code>pip</code>, into an isolated directory structure within your project directory. <br>Activate this isolated environment to install packages using:<br><br><strong><code>source </code><code>django<span class="highlight">env</span></code>/bin/activate</strong> <br><br>Your prompt should change to reflect that you are now in your virtual environment. It will look something like <br><br><strong><code>(django<span class="highlight">env</span>)username@hostname:~/</code><code><span class="highlight">myFirstProject</span></code><code>$</code>.<br><br></strong><br><br>In your new environment, you can use <code>pip</code> to install Django in your virtual environment.<br><br><code><strong>pip install django</strong><br></code></p>
+					<p><code>Once installed, verify the version in the Python interpreter -</code><br><br><strong>&gt;&gt;&gt; import django<br></strong><strong>&gt;&gt;&gt; django.VERSION<br><br></strong>To exit your virtual environment, type "<strong>deactivate</strong>" <code>from anywhere in the system.</code></p>
+
+					<hr>
+					<a href="/snippets/django/tutorial/overview"><button>Prev</button></a>
+					<a href="/snippets/django/tutorial/create-project"><button>Next</button></a>
 			</div>
          </div>
       </section>

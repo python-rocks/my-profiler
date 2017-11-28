@@ -63,35 +63,72 @@
          <!-- Page content-->
          <div class="content-wrapper">
              <div class="content-heading">
-                  Django Web Development from scratch
+                  Create a Django Project
              </div>
              <div class="panel-anim-fadeIn">
                   <div class="content-body tutorial-content" data-growable-markdown>
-					<p>With Django, you can take Web applications from concept to launch in a matter of hours. Django takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.</p>
-					<h4>Django is Ridiculously fast.</h4>
-					<p>Django was designed to help developers take applications from concept to completion as quickly as possible.</p>
-					<h4>Django is Fully loaded.</h4>
-					<p>Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.</p>
-					<h4>Django is Reassuringly secure.</h4>
-					<p>Django takes security seriously and helps developers avoid many common security mistakes, such as SQL injection, cross-site scripting, cross-site request forgery and clickjacking. Its user authentication system provides a secure way to manage user accounts and passwords.</p>
-					<h4>Django is Exceedingly scalable.</h4>
-					<p>Some of the busiest sites on the planet use Django’s ability to quickly and flexibly scale to meet the heaviest traffic demands.</p>
-					<h4>Django is Incredibly versatile.</h4>
-					<p>Companies, organizations and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.</p>
-					<h2>Sites Using Django</h2>
-					<ul class="list-link-soup"><li><a href="https://disqus.com/">Disqus</a></li>
-					<li><a href="http://instagram.com/">Instagram</a></li>
-					<li><a href="http://www.knightfoundation.org/">Knight Foundation</a></li>
-					<li><a href="http://www.macfound.org/">MacArthur Foundation</a></li>
-					<li><a href="https://www.mozilla.org/">Mozilla</a></li>
-					<li><a href="http://www.nationalgeographic.com/">National Geographic</a></li>
-					<li><a href="https://okfn.org/">Open Knowledge Foundation</a></li>
-					<li><a href="https://www.pinterest.com/">Pinterest</a></li>
-					<li><a href="http://www.openstack.org/">Open Stack</a></li>
+
+					<pre class="language-markup"><code>username@hostname:~$cd myFirstProject
+					username@hostname:~/myFirstProject$source djangoenv/bin/activate
+					(djangoenv)username@hostname:~/myFirstProject$</code></pre>
+					<p>We would be building a blog in Django which would basically cover:</p>
+					<ul><li>Using contrib.adminto create fully-featured admin pages</li>
+					<li>Adding tags to posts easily using <a href="https://github.com/alex/django-taggit/">taggit</a> app</li>
+					<li>Class-based generic views for rapidly building pages (New in Django 1.3)</li>
+					<li>Using template inheritance and filters</li>
+					<li>Leveraging contrib.syndicationfor a simple feed</li>
 					</ul>
-				</div>
-				<hr>
-				<a href="/snippets/django/tutorial/overview"><button>Next</button></a>
+
+					<p>Let's start the project by installing the latest version of Django</p>
+					<p><strong>pip install django</strong></p>
+					<p>This would install the latest version of Django (i.e 1.10)</p>
+					<p>Let’s start with our project now ....</p>
+					<ol><li>Start the project<br><br><strong>django-admin startproject djblog<br><br></strong></li>
+					<li>Browse the project and run the below commands to create a superuser (admin rights) and migrations.<strong><br><br></strong>
+					<pre class="language-markup"><code>cd djblog
+
+					./manage.py migrate (Does all the migrations for the in-built apps auth, sessions etc. )
+
+					./manage.py createsuperuser (Creates a super user with admin rights. Provide your username and password to create sucessfully)
+
+					./manage.py runserver (Run the development server and browse 127.0.0.1 to check the Django powered web-page)</code></pre>
+					</li>
+					<li>Add a new application blog<br><br><strong>./manage.py startapp blog<br><br></strong></li>
+					<li>Open the project in your convenient Editor (PyCharm, Sublime Text 3 etc. )</li>
+					<li>Edit djblog/settings.py to add "<strong><em>blog</em></strong>" in the list of installed apps.<br><br><pre class="language-python"><code>INSTALLED_APPS = [
+					    'django.contrib.admin',
+					    'django.contrib.auth',
+					    'django.contrib.contenttypes',
+					    'django.contrib.sessions',
+					    'django.contrib.messages',
+					    'django.contrib.staticfiles',
+					    'blog',
+					]
+					</code></pre>
+					</li>
+					<li>Add the Template search directory path in djblog/settings.py<strong><br></strong><strong><strong><br></strong></strong>
+					<pre class="language-python"><code>TEMPLATES = [
+					    {
+					        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+					        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+					        'APP_DIRS': True,
+					        'OPTIONS': {
+					            'context_processors': [
+					                'django.template.context_processors.debug',
+					                'django.template.context_processors.request',
+					                'django.contrib.auth.context_processors.auth',
+					                'django.contrib.messages.context_processors.messages',
+					            ],
+					        },
+					    },
+					]</code></pre>
+					</li>
+					</ol>
+
+					<p>In the following chapters, we would be updating our blog application to add database tables, urls and templating system.</p>
+					<hr>
+					<a href="/snippets/django/tutorial/installation"><button>Prev</button></a>
+					<a href="/snippets/django/tutorial/models"><button>Next</button></a>
 			</div>
          </div>
       </section>
