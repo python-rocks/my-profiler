@@ -68,7 +68,7 @@ PHOTO (AVATAR)
   line-height: 1.5em;
 }
 #text-header h1 span{
-  color: #198FD8;
+  color: #23ade5;
 }
 #text-header h1 sup{
   opacity: 0.5;
@@ -88,7 +88,7 @@ DEFAULT BOX
   margin-bottom: 15px;
 }
 .box h2{
-  color: #198FD8;
+  color: #23ade5;
   font-size: 1.8em;
   font-weight: 700;
   text-transform: uppercase;
@@ -119,12 +119,12 @@ EDUCATION
   content: ' ';
   display: block;
   background: #ec7263;
-  background: -moz-linear-gradient(top,  #ffffff 0%, #198fd8 7%, #198fd8 89%, #ffffff 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(7%,#198fd8), color-stop(89%,#198fd8), color-stop(100%,#ffffff));
-  background: -webkit-linear-gradient(top,  #ffffff 0%,#198fd8 7%,#198fd8 89%,#ffffff 100%);
-  background: -o-linear-gradient(top,  #ffffff 0%,#198fd8 7%,#198fd8 89%,#ffffff 100%);
-  background: -ms-linear-gradient(top,  #ffffff 0%,#198fd8 7%,#198fd8 89%,#ffffff 100%);
-  background: linear-gradient(to bottom,  #ffffff 0%,#198fd8 7%,#198fd8 89%,#ffffff 100%);
+  background: -moz-linear-gradient(top,  #ffffff 0%, #23ade5 7%, #23ade5 89%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(7%,#23ade5), color-stop(89%,#23ade5), color-stop(100%,#ffffff));
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#23ade5 7%,#23ade5 89%,#ffffff 100%);
+  background: -o-linear-gradient(top,  #ffffff 0%,#23ade5 7%,#23ade5 89%,#ffffff 100%);
+  background: -ms-linear-gradient(top,  #ffffff 0%,#23ade5 7%,#23ade5 89%,#ffffff 100%);
+  background: linear-gradient(to bottom,  #ffffff 0%,#23ade5 7%,#23ade5 89%,#ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 #education li{
@@ -237,7 +237,7 @@ SKILLS
 *******************************************/
 .item-skills{
   height: 30px;
-  background: #198fd8;
+  background: #23ade5;
   color: #fff;
   padding: 5px 10px;
   margin-bottom: 5px;
@@ -275,7 +275,7 @@ SKILLS
   display: block;
   margin: auto;
   margin-bottom: 15px;
-  background: #198fd8;
+  background: #23ade5;
 }
 .legend-left.legend:before{
   margin-left: 0;
@@ -318,7 +318,7 @@ HOBBIES
   margin-right: 5px;
   margin-bottom: 5px;
   padding: 5px 5px 5px 25px;
-  background: #198fd8;
+  background: #23ade5;
   position: relative;
   font-size: 1.2em;
 }
