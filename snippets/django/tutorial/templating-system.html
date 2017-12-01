@@ -221,47 +221,69 @@ def get_absolute_url(self):
       </section>
       <!-- Page footer-->
 
-	</div>
-	<!-- =============== VENDOR SCRIPTS ===============-->
-	<!-- MODERNIZR-->
-	<script src="/static/js/modernizr.custom.js"></script>
-	<!-- JQUERY-->
-	<script src="/static/js/jquery-1.11.1.min.js"></script>
-	<!-- BOOTSTRAP-->
-	<script src="/static/js/bootstrap.min.js"></script>
-	<!-- STORAGE API-->
-	<script src="/static/js/jquery.storageapi.js"></script>
-	<!-- JQUERY EASING-->
-	<script src="/static/js/jquery.easing.js"></script>
-	<!-- ANIMO-->
-	<script src="/static/js/animo.js"></script>
-	<!-- SYNTAX HIGHLIGHTING -->
-	<script src="/static/js/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script src="/static/js/app.js"></script>
+  </div>
+  <!-- =============== VENDOR SCRIPTS ===============-->
+  <!-- MODERNIZR-->
+  <script src="/static/js/modernizr.custom.js"></script>
+  <!-- JQUERY-->
+  <script src="/static/js/jquery-1.11.1.min.js"></script>
+  <!-- BOOTSTRAP-->
+  <script src="/static/js/bootstrap.min.js"></script>
+  <!-- STORAGE API-->
+  <script src="/static/js/jquery.storageapi.js"></script>
+  <!-- JQUERY EASING-->
+  <script src="/static/js/jquery.easing.js"></script>
+  <!-- ANIMO-->
+  <script src="/static/js/animo.js"></script>
+  <!-- SYNTAX HIGHLIGHTING -->
+  <script src="/static/js/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="/static/js/app.js"></script>
 
-    <script>
-    	document.addEventListener( 'HTMLImportsLoaded', function () 
-    	{
-    		// <header> html include
-    		var link_header = document.querySelector('link[href*="header"]');
-		    // Clone the <template> in the import.
-		    var template_header = link_header.import.querySelector('template');
-		    var clone_header = document.importNode(template_header.content, true);
+  <script>
+    document.addEventListener( 'HTMLImportsLoaded', function ()
+    {
+      // <header> html include
+      var link_header = document.querySelector('link[href*="header"]');
+      // Clone the <template> in the import.
+      var template_header = link_header.import.querySelector('template');
+      var clone_header = document.importNode(template_header.content, true);
 
-		    document.querySelector('.topnavbar-wrapper').appendChild(clone_header);
+      document.querySelector('.topnavbar-wrapper').appendChild(clone_header);
 
 
-		    // <aside> html include
-		    var link_aside = document.querySelector('link[href*="aside"]');
+      // <aside> html include
+      var link_aside = document.querySelector('link[href*="aside"]');
 
-		    // Clone the <template> in the import.
-		    var template_aside = link_aside.import.querySelector('template');
-		    var clone_aside = document.importNode(template_aside.content, true);
+      // Clone the <template> in the import.
+      var template_aside = link_aside.import.querySelector('template');
+      var clone_aside = document.importNode(template_aside.content, true);
 
-		    document.querySelector('.aside').appendChild(clone_aside);
-		});
-  	</script>
+      document.querySelector('.aside').appendChild(clone_aside);
+    });
+    </script>
+
+  <div id="disqus_thread"></div>
+  <script>
+
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+  var disqus_config = function () {
+
+  this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = "templating-system"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://sunnyarora-tech-com.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 </body>
 
